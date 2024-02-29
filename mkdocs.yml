@@ -1,0 +1,60 @@
+site_name: ""
+site_url: https://mydomain.org/
+repo_url: https://github.com/kharf/declcd
+theme:
+  name: material
+  custom_dir: overrides
+  logo: assets/declcd.png
+  font:
+    text: Montserrat
+  palette:
+    primary: custom
+    accent: custom
+    footer: custom
+  features:
+    - navigation.tabs
+    - content.code.copy
+    - content.code.select
+extra_css:
+  - stylesheets/extra.css
+extra:
+  version:
+    provider: mike
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/kharf/declcd
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+nav:
+  - Home: index.md
+  - Documentation:
+      - Overview: documentation/overview.md
+      - Getting Started:
+          - Installation: documentation/getting-started/installation.md
+          - Deploy your first application: documentation/getting-started/deploy.md
+
+# Custom Homepage Elements
+home_cover_image: assets/home.png
+home_tagline: Declcd
+home_description: |
+  A Declarative Continuous Delivery Toolkit For Kubernetes
+
+# Gradient Color
+home_gradient_hsla: hsla(180deg, 0%, 0%, 1) # Default Green: hsla(160deg,47%,55%,1)
+
+# Custom Homepage Button(s)
+home_button1_name: Get started ->
+home_button1_url: documentation/getting-started/installation
+home_button1_theme: md-button md-button--primary # Options: "md-button", "md-button md-button--primary"

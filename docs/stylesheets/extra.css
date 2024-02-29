@@ -1,0 +1,23 @@
+:root > * {
+  --md-primary-fg-color:        #1F212B;
+  --md-primary-bg-color:        #E5E5E5;
+  --md-accent-fg-color:        #33B1FF;
+  --md-default-bg-color: #1B1D26;
+  --md-default-fg-color: #CCCCCC;
+  --md-footer-fg-color: #1F212B;
+  --md-footer-bg-color: #1F212B;
+  --md-typeset-a-color: #C1E7FF;
+  --md-typeset-color: #CCCCCC;
+  --md-default-fg-color--light: #CCCCCC;
+
+  --md-code-fg-color: #f2f4f8;
+  --md-code-bg-color: #161616;
+  --md-code-hl-special-color: #33b1ff;
+  --md-code-hl-constant-color: #ff7eb6;
+  --md-code-hl-string-color: #be95ff;
+}
+
+.md-header__button.md-logo img, .md-header__button.md-logo svg {
+    height: 4.5rem;
+    width: 4.5rem;
+}

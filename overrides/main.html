@@ -1,0 +1,16 @@
+<!-- Elements added to "main.html" will be displayed on all pages -->
+
+{% extends "base.html" %}
+
+{% block htmltitle %}
+  {% if page.meta and page.meta.title %}
+    <title>{{ page.meta.title }} | Declcd</title>
+  {% elif page.title and not page.is_homepage %}
+    <title>{{ page.title | striptags }} | Declcd</title>
+  {% endif %}
+{% endblock %}
+
+{% block extrahead %}
+    <!-- main.html | Added "navigation.instant" support -->
+    <link rel="canonical" href=".">
+{% endblock %}
