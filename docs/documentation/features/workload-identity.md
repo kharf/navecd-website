@@ -66,9 +66,67 @@ release: component.#HelmRelease & {
   namespace: ns.content.metadata.name
   chart: {
     name:    "myapp"
-    repoURL: "oci://myapp.azurecr.io"
+    repoURL: "oci://myfakeregistry.azurecr.io"
     version: "1.0.0"
     auth:    workloadidentity.#Azure
+  }
+}
+```
+
+## AWS EKS
+
+!!! info
+
+    See [AWS Documentation](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html) to learn about how to setup EKS Workload Identity (EKS Pod Identities).
+
+Update your Helm Release to use Workload Identity:
+
+``` cue
+package myapp
+
+import (
+	"github.com/kharf/declcd/schema/component"
+	"github.com/kharf/declcd/schema/workloadidentity"
+)
+
+release: component.#HelmRelease & {
+  dependencies: [ns.id]
+  name:      "myapp"
+  namespace: ns.content.metadata.name
+  chart: {
+    name:    "myapp"
+    repoURL: "oci://myfakeregistry.dkr.ecr.eu-north-1.amazonaws.com"
+    version: "1.0.0"
+    auth:    workloadidentity.#AWS
+  }
+}
+```
+
+## GCP GKE
+
+!!! info
+
+    See [GCP Documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) to learn about how to setup GKE Workload Identity (IAM principal identifiers).
+
+Update your Helm Release to use Workload Identity:
+
+``` cue
+package myapp
+
+import (
+	"github.com/kharf/declcd/schema/component"
+	"github.com/kharf/declcd/schema/workloadidentity"
+)
+
+release: component.#HelmRelease & {
+  dependencies: [ns.id]
+  name:      "myapp"
+  namespace: ns.content.metadata.name
+  chart: {
+    name:    "myapp"
+    repoURL: "oci://europe-west4-docker.pkg.dev/myfakeregistry/charts"
+    version: "1.0.0"
+    auth:    workloadidentity.#GCP
   }
 }
 ```
