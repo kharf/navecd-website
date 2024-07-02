@@ -45,6 +45,8 @@ nav:
       - Getting Started:
           - Installation: documentation/getting-started/installation.md
           - Deploy your first application: documentation/getting-started/deploy.md
+      - Features:
+          - Workload Identity: documentation/features/workload-identity.md
 
 # Custom Homepage Elements
 home_cover_image: assets/home.png

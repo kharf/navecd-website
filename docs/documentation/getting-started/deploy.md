@@ -15,13 +15,13 @@
 
 </div>
 
-#### Create Kind Cluster
+## Create Kind Cluster
 
 ``` bash
 kind create cluster --name declcd
 ```
 
-#### Initialize a Declcd GitOps Repository
+## Initialize a Declcd GitOps Repository
 
 ``` bash
 mkdir mygitops
@@ -39,7 +39,7 @@ git push -u origin main
 ```
 See [CUE module reference](https://cuelang.org/docs/reference/modules/#module-path) for valid CUE module paths.
 
-#### Install Declcd onto your Kubernetes Cluster
+## Install Declcd onto your Kubernetes Cluster
 
 ``` bash
 declcd install \
@@ -51,7 +51,7 @@ git add .
 git commit -m "Install declcd"
 ```
 
-#### Deploy a Manifest and a HelmRelease
+## Deploy a Manifest and a HelmRelease
 
 Get Go Kubernetes Structs and import them as CUE schemas.
 
