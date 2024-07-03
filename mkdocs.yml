@@ -50,8 +50,7 @@ nav:
           - Secrets: documentation/features/secrets.md
           - Deploy Key: documentation/features/deploy-key.md
           - Workload Identity: documentation/features/workload-identity.md
-          - Multi-Tenancy: documentation/features/multi-tenancy.md
-          - Sharding: documentation/features/sharding.md
+          - Multi-Tenancy / Sharding: documentation/features/multi-tenancy.md
           - High Availability: documentation/features/ha.md
 
 # Custom Homepage Elements

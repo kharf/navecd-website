@@ -8,7 +8,7 @@ Declcd integrates well with the [External Secrets Operator](https://external-sec
 package externalsecrets
 
 import (
-	"github.com/kharf/declcd/schema/component"
+  "github.com/kharf/declcd/schema/component"
 )
 
 _name: "external-secrets"
@@ -20,16 +20,16 @@ ns: component.#Manifest & {
 }
 
 release: component.#HelmRelease & {
-	dependencies: [
-		ns.id,
-	]
-	name:      _name
-	namespace: ns.content.metadata.name
-	chart: {
-		name:    _name
-		repoURL: "oci://ghcr.io/external-secrets/charts"
-		version: "x.x.x"
-	}
+  dependencies: [
+    ns.id,
+  ]
+  name:      _name
+  namespace: ns.content.metadata.name
+  chart: {
+    name:    _name
+    repoURL: "oci://ghcr.io/external-secrets/charts"
+    version: "x.x.x"
+  }
 }
 ```
 
@@ -37,10 +37,10 @@ release: component.#HelmRelease & {
 package externalsecrets
 
 import (
-	"github.com/kharf/declcd/schema/component"
+  "github.com/kharf/declcd/schema/component"
   // go get github.com/external-secrets/external-secrets/apis/externalsecrets/v1beta1
   // cue get go github.com/external-secrets/external-secrets/apis/externalsecrets/v1beta1
-	"github.com/external-secrets/external-secrets/apis/externalsecrets/v1beta1"
+  "github.com/external-secrets/external-secrets/apis/externalsecrets/v1beta1"
 )
 
 storeServiceAccount: component.#Manifest & {
