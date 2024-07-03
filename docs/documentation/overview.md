@@ -21,4 +21,4 @@ All Components share the attribute to specify Dependencies to other Components. 
 See [schema](https://github.com/kharf/declcd/blob/main/schema/component/schema.cue).
 
 ## Next Steps
-Get started with [Declcd](../documentation/getting-started/installation.md).
+Get started with [Declcd](getting-started/installation.md).
