@@ -96,3 +96,5 @@ declcd install \
   -t <token> \
   --shard tenant
 ```
+
+A complete example can be found here: [Declcd Platform Example](https://github.com/kharf/declcd-platform-example).
