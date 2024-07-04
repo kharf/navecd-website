@@ -24,6 +24,10 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/kharf/declcd
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/kharf_
+hooks:
+  - hooks/copyright.py
 
 markdown_extensions:
   - admonition

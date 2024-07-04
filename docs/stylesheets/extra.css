@@ -21,3 +21,13 @@
     height: 4.5rem;
     width: 4.5rem;
 }
+
+.md-typeset .grid.cards>ol>li, .md-typeset .grid.cards>ul>li, .md-typeset .grid>.card {
+    border: .05rem solid var(--md-primary-fg-color);
+    border-radius: .5rem;
+    display: block;
+    margin: 0;
+    padding: .8rem;
+    transition: border .25s, box-shadow .25s;
+    background-color: #1F212B;
+}

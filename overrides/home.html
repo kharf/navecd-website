@@ -3,7 +3,6 @@
 {% block tabs %}
 {{ super() }}
 
-
 <style>
     .md-main {
         flex-grow: 0
@@ -38,7 +37,7 @@
 
     .tx-hero__image{
         width:50rem;
-        height:50rem;
+        height:40rem;
         order:1;
         padding-right: 2.5rem;
         filter: drop-shadow(0 0 0.5rem black);
@@ -227,13 +226,12 @@
       	  {%- endif -%}
         </div>
       </div>
-
-    <div class="tx-hero__content">
-    </div>
 </section>
 
 {% endblock %}
-{% block content %}{% endblock %}
+{% block content %}
+{{ page.content }}
+{% endblock %}
 {% block footer %}
   {{ super() }}
 {% endblock %}
