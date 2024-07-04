@@ -64,5 +64,5 @@ home_gradient_hsla: hsla(180deg, 0%, 0%, 1) # Default Green: hsla(160deg,47%,55%
 
 # Custom Homepage Button(s)
 home_button1_name: Get started ->
-home_button1_url: documentation/getting-started/installation
+home_button1_url: documentation/overview
 home_button1_theme: md-button md-button--primary # Options: "md-button", "md-button md-button--primary"
