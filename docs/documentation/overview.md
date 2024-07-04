@@ -8,7 +8,44 @@ and an automated process to reconcile the production environment with the desire
 ## Why Declcd?
 
 Traditional GitOps tools often rely on YAML for configuration, which can lead to verbosity and complexity.
-Declcd leverages [CUE](https://cuelang.org/), a configuration language with a more concise and expressive syntax, making it easier to define and maintain your desired cluster state.
+Declcd leverages [CUE](https://cuelang.org/), a type safe configuration language with a more concise and expressive syntax and the benefits of general-purpose programming languages,
+making it easier to define and maintain your desired cluster state.
+
+Declcd adheres to the GitOps Principles:
+
+<div class="grid cards" markdown>
+
+-   __Declarative__
+
+    ---
+
+    Utilizing [CUE](https://cuelang.org/) - A type safe configuration language with the benefits of general-purpose programming languages
+
+-   __Versioned and Immutable__
+
+    ---
+
+    Using Git as the source of truth for defining the desired system state
+
+-   __Pulled Automatically__
+
+    ---
+
+    Declcd automatically pulls the desired state declarations, written as CUE values, from Git
+
+-   __Continuously Reconciled__
+
+    ---
+
+    Declcd is a Kubernetes Controller, which continuously observes actual system state and applies the desired state
+
+</div>
+
+## Deploy anything
+
+Deployments, StatefulSets, Pods, ConfigMaps, ..., anything you can deploy to Kubernetes can be deployed with Declcd.
+Just push to Git and let Declcd do the work from inside your Cluster!
+Got a Helm Chart? Deploy it with Declcd.
 
 ## Basics of Declcd
 
