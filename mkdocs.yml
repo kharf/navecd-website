@@ -57,7 +57,7 @@ nav:
 home_cover_image: assets/home.png
 home_tagline: Declcd
 home_description: |
-  A Declarative Continuous Delivery Toolkit For Kubernetes
+  A Type Safe Declarative Continuous Delivery Toolkit For Kubernetes
 
 # Gradient Color
 home_gradient_hsla: hsla(180deg, 0%, 0%, 1) # Default Green: hsla(160deg,47%,55%,1)
