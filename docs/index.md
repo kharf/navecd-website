@@ -5,7 +5,7 @@ hide:
   - navigation
   - toc
 ---
-## Embracing GitOps
+## Embrace GitOps
 <div class="grid cards" markdown>
 
 -   __Declarative__
@@ -31,5 +31,31 @@ hide:
     ---
 
     Declcd is a Kubernetes Controller, which continuously observes actual system state and applies the desired state
+
+</div>
+
+
+
+
+## Deploy anything
+<div class="grid cards" markdown>
+
+-   __Kubernetes Manifests__
+
+    ---
+
+    Deployments, StatefulSets, Pods, ConfigMaps, ..., anything you can deploy to Kubernetes can be deployed with Declcd.
+
+    Just push to Git and let Declcd do the work from inside your Cluster!
+
+    [Get started!](documentation/getting-started/installation.md)
+
+-   __Helm__
+
+    ---
+
+    Got a Helm Chart? Deploy it with Declcd.
+
+    [See how!](documentation/features/helm.md)
 
 </div>
