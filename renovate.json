@@ -23,6 +23,17 @@
             ],
             "versioningTemplate": "semver-coerced",
             "datasourceTemplate": "github-releases"
+        },
+        {
+            "customType": "regex",
+            "fileMatch": [
+                "^(.*?).cue$"
+            ],
+            "matchStrings": [
+                "uses: \"(?<depName>.*?)@(?<currentValue>.*?)\""
+            ],
+            "datasourceTemplate": "github-tags",
+            "versioningTemplate": "semver-coerced"
         }
     ]
 }

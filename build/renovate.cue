@@ -36,4 +36,13 @@ prConcurrentLimit:     0
 prHourlyLimit:         0
 customManagers: [
 	_githubReleaseManager,
+	{
+		customType: "regex"
+		fileMatch: [
+			"^(.*?).cue$",
+		]
+		matchStrings: ["uses: \"(?<depName>.*?)@(?<currentValue>.*?)\""]
+		datasourceTemplate: "github-tags"
+		versioningTemplate: "semver-coerced"
+	},
 ]
