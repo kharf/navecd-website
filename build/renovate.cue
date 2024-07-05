@@ -41,7 +41,7 @@ customManagers: [
 		fileMatch: [
 			"^(.*?).cue$",
 		]
-		matchStrings: ["uses: \"(?<depName>.*?)@(?<currentValue>.*?)\""]
+		matchStrings: [#"uses: "(?<depName>.*?)@(?<currentDigest>.*?)" // (?<currentValue>.*?)$"#]
 		datasourceTemplate: "github-tags"
 		versioningTemplate: "semver-coerced"
 	},

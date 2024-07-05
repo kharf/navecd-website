@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
       - name: Update
-        uses: renovatebot/github-action@259200be4d976a76196ec8985b0dddcaf1733b47 # v40.2.0
+        uses: renovatebot/github-action@259200be4d976a76196ec8985b0dddcaf1733b47
         env:
           RENOVATE_REPOSITORIES: ${{ github.repository }}
         with:

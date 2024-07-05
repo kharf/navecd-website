@@ -20,17 +20,19 @@ import "github.com/kharf/cuepkgs/modules/github@v0"
 
 #checkoutCode: {
 	name: "Checkout code"
-	uses: "actions/checkout@v4.1.7"
+	uses: "actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332" // v4.1.7
 	with?: {
 		[string]: string | number | bool
 		token:    "${{ secrets.PAT }}"
 	}
+	ref?: string
 }
 
 #step: {
-	name?: string
-	run?:  string
-	uses?: string
+	name?:                string
+	run?:                 string
+	uses?:                string
+	"working-directory"?: string
 	env?: {
 		[string]: string | number | bool
 	}
@@ -63,14 +65,14 @@ workflows: [
 						"""
 					},
 					#step & {
-						uses: "actions/setup-python@v5.1.0"
+						uses: "actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d" // v5.1.0
 						with: "python-version": "3.x"
 					},
 					#step & {
 						run: #"echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV"#
 					},
 					#step & {
-						uses: "actions/cache@v4.0.2"
+						uses: "actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9" // v4.0.2
 						with: {
 							key:            "mkdocs-material-${{ env.cache_id }}"
 							path:           ".cache"
@@ -103,7 +105,7 @@ workflows: [
 					#checkoutCode,
 					#step & {
 						name: "Update"
-						uses: "renovatebot/github-action@v40.2.0"
+						uses: "renovatebot/github-action@259200be4d976a76196ec8985b0dddcaf1733b47" // v40.2.0
 						env: {
 							RENOVATE_REPOSITORIES: "${{ github.repository }}"
 						}
@@ -111,6 +113,48 @@ workflows: [
 							configurationFile: "renovate.json"
 							token:             "${{ secrets.PAT }}"
 						}
+					},
+				]
+			}
+		}
+	},
+	#workflow & {
+		_name: "genworkflows"
+		workflow: github.#Workflow & {
+			permissions: contents: "write"
+			on: {
+				"pull_request": {
+					branches: [
+						"main",
+					]
+				}
+			}
+
+			jobs: "\(_name)": {
+				steps: [
+					#checkoutCode & {
+						ref: "${{ github.head_ref || github.ref_name }}"
+					},
+					#step & {
+						uses: "cue-lang/setup-cue@a93fa358375740cd8b0078f76355512b9208acb1" //v1.0.0
+						with: {
+							version: "v0.9.2"
+						}
+					},
+					#step & {
+						name:                "Gen Workflows"
+						"working-directory": "build"
+						env: {
+							CUE_REGISTRY: "ghcr.io/kharf"
+						}
+						run: """
+						cue cmd genyamlworkflows
+						git config --global user.name "Declcd Bot"
+						git remote set-url origin https://${{ secrets.PAT }}@github.com/kharf/declcd.git
+						git add .github/workflows
+						git commit", "-m", "chore: update yaml workflows"
+						git push
+						"""
 					},
 				]
 			}
