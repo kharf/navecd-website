@@ -63,7 +63,7 @@ workflows: [
 						"""
 					},
 					#step & {
-						uses: "actions/setup-python@v5"
+						uses: "actions/setup-python@v5.1.0"
 						with: "python-version": "3.x"
 					},
 					#step & {
