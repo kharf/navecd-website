@@ -65,7 +65,7 @@ workflows: [
 						"""
 					},
 					#step & {
-						uses: "actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d" // v5.1.0
+						uses: "actions/setup-python@a0d74c0c423f896bc4e7be91d5cb1e2d54438db3" // v5.1.0
 						with: "python-version": "3.x"
 					},
 					#step & {
