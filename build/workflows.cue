@@ -21,7 +21,7 @@ import "github.com/kharf/cuepkgs/modules/github@v0"
 #checkoutCode: {
 	name: "Checkout code"
 	uses: "actions/checkout@v4.1.7"
-	with: {
+	with?: {
 		[string]: string | number | bool
 		token:    "${{ secrets.PAT }}"
 	}
@@ -34,7 +34,7 @@ import "github.com/kharf/cuepkgs/modules/github@v0"
 	env?: {
 		[string]: string | number | bool
 	}
-	with: {
+	with?: {
 		[string]: string | number | bool
 	}
 }
