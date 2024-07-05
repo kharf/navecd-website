@@ -107,6 +107,7 @@ workflows: [
 						name: "Update"
 						uses: "renovatebot/github-action@259200be4d976a76196ec8985b0dddcaf1733b47" // v40.2.0
 						env: {
+							LOG_LEVEL:             "debug"
 							RENOVATE_REPOSITORIES: "${{ github.repository }}"
 						}
 						with: {
