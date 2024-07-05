@@ -35,6 +35,7 @@ branchConcurrentLimit: 0
 prConcurrentLimit:     0
 prHourlyLimit:         0
 "github-actions": enabled: false
+digest: enabled:           false
 customManagers: [
 	_githubReleaseManager,
 	{
