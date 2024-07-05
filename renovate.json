@@ -12,6 +12,9 @@
     "branchConcurrentLimit": 0,
     "prConcurrentLimit": 0,
     "prHourlyLimit": 0,
+    "github-actions": {
+        "enabled": false
+    },
     "customManagers": [
         {
             "customType": "regex",
@@ -30,7 +33,7 @@
                 "^(.*?).cue$"
             ],
             "matchStrings": [
-                "uses: \"(?<depName>.*?)@(?<currentValue>.*?)\""
+                "uses: \"(?<depName>.*?)@(?<currentDigest>.*?)\" // (?<currentValue>.*?)$"
             ],
             "datasourceTemplate": "github-tags",
             "versioningTemplate": "semver-coerced"

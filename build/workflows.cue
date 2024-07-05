@@ -24,8 +24,8 @@ import "github.com/kharf/cuepkgs/modules/github@v0"
 	with?: {
 		[string]: string | number | bool
 		token:    "${{ secrets.PAT }}"
+		ref?:     string
 	}
-	ref?: string
 }
 
 #step: {
@@ -133,7 +133,9 @@ workflows: [
 			jobs: "\(_name)": {
 				steps: [
 					#checkoutCode & {
-						ref: "${{ github.head_ref || github.ref_name }}"
+						with: {
+							ref: "${{ github.head_ref || github.ref_name }}"
+						}
 					},
 					#step & {
 						uses: "cue-lang/setup-cue@a93fa358375740cd8b0078f76355512b9208acb1" //v1.0.0
@@ -150,10 +152,11 @@ workflows: [
 						run: """
 						cue cmd genyamlworkflows
 						git config --global user.name "Declcd Bot"
-						git remote set-url origin https://${{ secrets.PAT }}@github.com/kharf/declcd.git
-						git add .github/workflows
-						git commit", "-m", "chore: update yaml workflows"
-						git push
+						git config --global user.email "kevinfritz210@gmail.com"
+						git remote set-url origin https://${{ secrets.PAT }}@github.com/kharf/declcd-website.git
+						git add ../.github/workflows
+						git commit -m "chore: update yaml workflows" || true
+						git push || true
 						"""
 					},
 				]
