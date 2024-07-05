@@ -70,7 +70,7 @@ workflows: [
 						run: #"echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV"#
 					},
 					#step & {
-						uses: "actions/cache@v4"
+						uses: "actions/cache@v4.0.2"
 						with: {
 							key:            "mkdocs-material-${{ env.cache_id }}"
 							path:           ".cache"
