@@ -69,7 +69,7 @@ However, CRD upgrade is supported by Declcd and can be enabled:
 
     Declcd never deletes CRDs contained in a Chart. It only handles installations and upgrades.
 
-``` cue hl_lines="16"
+``` cue hl_lines="15"
 package myapp
 
 import (
@@ -84,9 +84,7 @@ myRelease: component.#HelmRelease & {
         repoURL: "oci://my-chart-repository"
         version: "x.x.x"
     }
-    CRDs: {
-      allowUpgrade: true
-    }
+    crds: allowUpgrade: true
     values: {
       foo: "bar"
     }
