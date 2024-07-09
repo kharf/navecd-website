@@ -51,6 +51,13 @@ workflows: [
 					branches: [
 						"main",
 					]
+					"paths-ignore": [
+						".github/**",
+						"build/**",
+						"renovate.json",
+						".gitignore",
+						"LICENSE",
+					]
 				}
 			}
 

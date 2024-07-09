@@ -5,6 +5,12 @@ name: deploy
   push:
     branches:
       - main
+    paths-ignore:
+      - .github/**
+      - build/**
+      - renovate.json
+      - .gitignore
+      - LICENSE
 jobs:
   deploy:
     runs-on: ubuntu-latest
