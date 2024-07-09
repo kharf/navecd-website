@@ -41,9 +41,9 @@ customManagers: [
 	{
 		customType: "regex"
 		fileMatch: [
-			"^(.*?).cue$",
+			"build/workflows.cue",
 		]
-		matchStrings: [#"uses: "(?<depName>.*?)@(?<currentDigest>.*?)" // (?<currentValue>.*?)(\\s|$)"#]
+		matchStrings: [#"uses: "(?<depName>.*?)@(?<currentDigest>.*?)" // (?<currentValue>.*?)(\s|$)"#]
 		datasourceTemplate: "github-tags"
 		versioningTemplate: "semver-coerced"
 	},
