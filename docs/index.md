@@ -12,13 +12,13 @@ hide:
 
     ---
 
-    Utilizing [CUE](https://cuelang.org/) - A type safe configuration language with the benefits of general-purpose programming languages
+    Declcd integrates [CUE](https://cuelang.org/) natively - A type safe configuration language with the benefits of general-purpose programming languages
 
 -   __Versioned and Immutable__
 
     ---
 
-    Using Git as the source of truth for defining the desired system state
+    Git as the source of truth for defining the desired system state
 
 -   __Pulled Automatically__
 
@@ -33,9 +33,6 @@ hide:
     Declcd is a Kubernetes Controller, which continuously observes actual system state and applies the desired state
 
 </div>
-
-
-
 
 ## Deploy anything
 <div class="grid cards" markdown>
