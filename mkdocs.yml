@@ -51,6 +51,7 @@ nav:
           - Deploy your first application: documentation/getting-started/deploy.md
       - Features:
           - Helm: documentation/features/helm.md
+          - Conflict Management: documentation/features/conflicts.md
           - Secrets: documentation/features/secrets.md
           - Deploy Key: documentation/features/deploy-key.md
           - Workload Identity: documentation/features/workload-identity.md

@@ -23,8 +23,8 @@ primaryServiceAccount: component.#Manifest & {
       name:      "project-controller-primary"
       namespace: ns.content.metadata.name
       annotations: "azure.workload.identity/client-id": "<client id>"
-		}
-	}
+    }
+  }
 }
 ```
 
@@ -56,8 +56,8 @@ Update your Helm Release to use Workload Identity:
 package myapp
 
 import (
-	"github.com/kharf/declcd/schema/component"
-	"github.com/kharf/declcd/schema/workloadidentity"
+  "github.com/kharf/declcd/schema/component"
+  "github.com/kharf/declcd/schema/workloadidentity"
 )
 
 release: component.#HelmRelease & {
@@ -85,8 +85,8 @@ Update your Helm Release to use Workload Identity:
 package myapp
 
 import (
-	"github.com/kharf/declcd/schema/component"
-	"github.com/kharf/declcd/schema/workloadidentity"
+  "github.com/kharf/declcd/schema/component"
+  "github.com/kharf/declcd/schema/workloadidentity"
 )
 
 release: component.#HelmRelease & {
@@ -114,8 +114,8 @@ Update your Helm Release to use Workload Identity:
 package myapp
 
 import (
-	"github.com/kharf/declcd/schema/component"
-	"github.com/kharf/declcd/schema/workloadidentity"
+  "github.com/kharf/declcd/schema/component"
+  "github.com/kharf/declcd/schema/workloadidentity"
 )
 
 release: component.#HelmRelease & {

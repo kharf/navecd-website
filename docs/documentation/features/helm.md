@@ -69,7 +69,7 @@ However, CRD upgrade is supported by Declcd and can be enabled:
 
     Declcd never deletes CRDs contained in a Chart. It only handles installations and upgrades.
 
-``` cue hl_lines="15"
+``` cue hl_lines="17"
 package myapp
 
 import (
@@ -79,14 +79,65 @@ import (
 myRelease: component.#HelmRelease & {
     name:      "my-release"
     namespace: ns.content.metadata.name
+
     chart: {
         name:    "my-chart"
         repoURL: "oci://my-chart-repository"
         version: "x.x.x"
     }
+
     crds: allowUpgrade: true
+
     values: {
       foo: "bar"
     }
 }
 ```
+
+## Patches / Post Rendering
+
+Patches allow to manipulate rendered manifests before they are installed or upgraded. 
+
+``` cue hl_lines="23-35"
+package myapp
+
+import (
+  "github.com/kharf/declcd/schema/component"
+)
+
+myRelease: component.#HelmRelease & {
+    name:      "my-release"
+    namespace: ns.content.metadata.name
+
+    chart: {
+        name:    "my-chart"
+        repoURL: "oci://my-chart-repository"
+        version: "x.x.x"
+    }
+
+    crds: allowUpgrade: true
+
+    values: {
+      foo: "bar"
+    }
+
+    patches: [
+      #deployment & {
+        apiVersion: "apps/v1"
+        kind: "Deployment"
+        metadata: {
+          name:      "deployment-from-chart"
+          namespace: ns.content.metadata.name
+        }
+        spec: {
+          replicas: 2 @ignore(conflict)
+        }
+      },
+    ]
+}
+```
+
+Noticed the `@ignore(conflict)` build attribute at line 32?
+Patches can also be used to "flag" manifest fields of Helm Chart templates.
+
+Read more here: [Conflict Management](conflicts.md)
