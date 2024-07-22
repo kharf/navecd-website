@@ -4,7 +4,7 @@ This makes Declcd a `Field Manager`.
 Any change to Declcd managed fields will be overwritten by Declcd and if you commit to using GitOps as your way to deploy to Kubernetes, then manual changes to your cluster are an anti pattern.
 But there are cases where Field Managers in your cluster try to take over management of certain fields.
 The most prominent situation probably is a Horizontal Pod Autoscaler mutating the replicas count.
-In order to avoid fighting over the replicas count, you can tell Declcd to ignore conflicting fields, so that the competing manager can take over. 
+In order to avoid fighting over conflicting fields, you can tell Declcd to ignore them, so that the competing manager can take over. 
 
 ``` cue title="myapp/deployment.cue" hl_lines="18"
 package myapp
