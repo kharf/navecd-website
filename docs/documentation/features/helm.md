@@ -97,6 +97,7 @@ myRelease: component.#HelmRelease & {
 ## Patches / Post Rendering
 
 Patches allow to manipulate rendered manifests before they are installed or upgraded. 
+Manifests are identified by its GVK(Group/Version/Kind), Name and Namespace for namespaced manifests.
 
 ``` cue hl_lines="23-35"
 package myapp
