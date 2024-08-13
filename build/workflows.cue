@@ -112,7 +112,7 @@ workflows: [
 					#checkoutCode,
 					#step & {
 						name: "Update"
-						uses: "renovatebot/github-action@0c94129d48b4e92addf23686b8a735b3057a0448" // v40.2.5
+						uses: "renovatebot/github-action@b266b24b144602ed4f512f0773009d026722f4cc" // v40.2.6
 						env: {
 							LOG_LEVEL:             "debug"
 							RENOVATE_REPOSITORIES: "${{ github.repository }}"
