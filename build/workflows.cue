@@ -159,9 +159,9 @@ workflows: [
 						}
 						run: """
 						cue cmd genyamlworkflows
-						git config --global user.name "Declcd Bot"
+						git config --global user.name "Navecd Bot"
 						git config --global user.email "kevinfritz210@gmail.com"
-						git remote set-url origin https://${{ secrets.PAT }}@github.com/kharf/declcd-website.git
+						git remote set-url origin https://${{ secrets.PAT }}@github.com/kharf/navecd-website.git
 						git add ../.github/workflows
 						git commit -m "chore: update yaml workflows" || true
 						git push || true

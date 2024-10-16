@@ -1,15 +1,15 @@
-[Sharding](multi-tenancy.md) is used to distribute workload by installing multiple Declcd Controllers and
-Declcd uses [Leases](https://kubernetes.io/docs/concepts/architecture/leases/) to make sure that there is only one running Controller per Shard.
+[Sharding](multi-tenancy.md) is used to distribute workload by installing multiple Navecd Controllers and
+Navecd uses [Leases](https://kubernetes.io/docs/concepts/architecture/leases/) to make sure that there is only one running Controller per Shard.
 
 While that works for most cases, sometimes it is desired to have backup instances running on different nodes to reduce downtime in case of node failures.
 You can use [Pod Anti-Affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity)
-and increase the replica count of your Declcd Controllers to counter that situation:
+and increase the replica count of your Navecd Controllers to counter that situation:
 
-``` cue title="declcd/primary_system.cue" hl_lines="19"
-package declcd
+``` cue title="navecd/primary_system.cue" hl_lines="19"
+package navecd
 
 import (
-  "github.com/kharf/declcd/schema/component"
+  "github.com/kharf/navecd/schema/component"
 )
 
 primaryProjectControllerDeployment: component.#Manifest & {
@@ -31,11 +31,11 @@ primaryProjectControllerDeployment: component.#Manifest & {
 }
 ```
 
-``` cue title="declcd/ha.cue""
-package declcd
+``` cue title="navecd/ha.cue""
+package navecd
 
 import (
-  "github.com/kharf/declcd/schema/component"
+  "github.com/kharf/navecd/schema/component"
 )
 
 primaryProjectControllerDeployment: component.#Manifest & {

@@ -12,7 +12,7 @@ hide:
 
     ---
 
-    Declcd integrates [CUE](https://cuelang.org/) natively - A type safe configuration language with the benefits of general-purpose programming languages
+    Navecd integrates [CUE](https://cuelang.org/) natively - A type safe configuration language with the benefits of general-purpose programming languages
 
 -   __Versioned and Immutable__
 
@@ -24,13 +24,13 @@ hide:
 
     ---
 
-    Declcd automatically pulls the desired state declarations, written as CUE values, from Git
+    Navecd automatically pulls the desired state declarations, written as CUE values, from Git
 
 -   __Continuously Reconciled__
 
     ---
 
-    Declcd is a Kubernetes Controller, which continuously observes actual system state and applies the desired state
+    Navecd is a Kubernetes Controller, which continuously observes actual system state and applies the desired state
 
 </div>
 
@@ -41,9 +41,9 @@ hide:
 
     ---
 
-    Deployments, StatefulSets, Pods, ConfigMaps, ..., anything you can deploy to Kubernetes can be deployed with Declcd.
+    Deployments, StatefulSets, Pods, ConfigMaps, ..., anything you can deploy to Kubernetes can be deployed with Navecd.
 
-    Just push to Git and let Declcd do the work from inside your Cluster!
+    Just push to Git and let Navecd do the work from inside your Cluster!
 
     [Get started!](documentation/getting-started/installation.md)
 
@@ -51,7 +51,7 @@ hide:
 
     ---
 
-    Got a Helm Chart? Deploy it with Declcd.
+    Got a Helm Chart? Deploy it with Navecd.
 
     [See how!](documentation/features/helm.md)
 

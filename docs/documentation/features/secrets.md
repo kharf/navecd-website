@@ -1,6 +1,6 @@
 Secrets, encrypted or unencrypted, should not reside in Git and are best managed by a dedicated secret manager.
 
-Declcd integrates well with the [External Secrets Operator](https://external-secrets.io/).
+Navecd integrates well with the [External Secrets Operator](https://external-secrets.io/).
 
 ## Example
 
@@ -8,7 +8,7 @@ Declcd integrates well with the [External Secrets Operator](https://external-sec
 package externalsecrets
 
 import (
-  "github.com/kharf/declcd/schema/component"
+  "github.com/kharf/navecd/schema/component"
 )
 
 _name: "external-secrets"
@@ -37,7 +37,7 @@ release: component.#HelmRelease & {
 package externalsecrets
 
 import (
-  "github.com/kharf/declcd/schema/component"
+  "github.com/kharf/navecd/schema/component"
   // go get github.com/external-secrets/external-secrets/apis/externalsecrets/v1beta1
   // cue get go github.com/external-secrets/external-secrets/apis/externalsecrets/v1beta1
   "github.com/external-secrets/external-secrets/apis/externalsecrets/v1beta1"

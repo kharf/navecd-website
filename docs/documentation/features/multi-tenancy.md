@@ -1,14 +1,14 @@
-The usual GitOps setup consists of a single GitOpsProject and a single GitOps Controller, but Declcd supports Multi-Tenancy, where a system evolves around multiple Git repositories.
-For example a company wants to split responsibilities to different teams. A platform team could maintain Declcd and all the infrastructure necessary to run a cluster with independant tenants,
+The usual GitOps setup consists of a single GitOpsProject and a single GitOps Controller, but Navecd supports Multi-Tenancy, where a system evolves around multiple Git repositories.
+For example a company wants to split responsibilities to different teams. A platform team could maintain Navecd and all the infrastructure necessary to run a cluster with independant tenants,
 while each tenant could maintain its own state of applications.
 
-Declcd uses the concept of Sharding. Every Declcd Controller instance forms a Shard and GitOpsProjects are assigned to Shards.
+Navecd uses the concept of Sharding. Every Navecd Controller instance forms a Shard and GitOpsProjects are assigned to Shards.
 
-![Arch](../../assets/declcd-platform-arch.png)
+![Arch](../../assets/navecd-platform-arch.png)
 
 ## Single-Sharded
 
-By default Declcd is single-sharded, but multiple GitOpsProjects can be assigned to the same Shard:
+By default Navecd is single-sharded, but multiple GitOpsProjects can be assigned to the same Shard:
 
 !!! info
 
@@ -16,10 +16,10 @@ By default Declcd is single-sharded, but multiple GitOpsProjects can be assigned
     You can limit a tenant's permissions by assigning a custom Service Account to the tenant's GitOpsProject. 
 
 ``` cue title="projects.cue" hl_lines="47"
-package declcd
+package navecd
 
 import (
-  "github.com/kharf/declcd/schema/component"
+  "github.com/kharf/navecd/schema/component"
 )
 
 foundation: component.#Manifest & {
@@ -28,13 +28,13 @@ foundation: component.#Manifest & {
     ns.id,
   ]
   content: {
-    apiVersion: "gitops.declcd.io/v1beta1"
+    apiVersion: "gitops.navecd.io/v1beta1"
     kind:       "GitOpsProject"
     metadata: {
       name:      "foundation"
-      namespace: "declcd-system"
+      namespace: "navecd-system"
       labels:    {
-        "declcd/shard":   "primary"
+        "navecd/shard":   "primary"
       }
     }
     spec: {
@@ -52,13 +52,13 @@ tenant: component.#Manifest & {
     ns.id,
   ]
   content: {
-    apiVersion: "gitops.declcd.io/v1beta1"
+    apiVersion: "gitops.navecd.io/v1beta1"
     kind:       "GitOpsProject"
     metadata: {
       name:      "tenant"
-      namespace: "declcd-system"
+      namespace: "navecd-system"
       labels:    {
-        "declcd/shard":   "primary"
+        "navecd/shard":   "primary"
       }
     }
     spec: {
@@ -80,16 +80,16 @@ tenant: component.#Manifest & {
 
 ``` bash
 # platform shard
-declcd init github.com/user/mygitops
-declcd install \
+navecd init github.com/user/mygitops
+navecd install \
   -u git@github.com:user/platform.git \
   -b main \
   --name dev \
   -t <token>
 
 # tenant shard
-declcd init github.com/user/mygitops --shard tenant --secondary
-declcd install \
+navecd init github.com/user/mygitops --shard tenant --secondary
+navecd install \
   -u git@github.com:user/tenant.git \
   -b main \
   --name dev \
@@ -97,4 +97,4 @@ declcd install \
   --shard tenant
 ```
 
-A complete example can be found here: [Declcd Platform Example](https://github.com/kharf/declcd-platform-example).
+A complete example can be found here: [Navecd Platform Example](https://github.com/kharf/navecd-platform-example).

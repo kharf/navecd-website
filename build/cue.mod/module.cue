@@ -1,4 +1,4 @@
-module: "github.com/kharf/declcd-website/build"
+module: "github.com/kharf/navecd-website/build"
 language: {
 	version: "v0.9.2"
 }

@@ -7,7 +7,7 @@
 
 === "Requirements"
 
-    * Declcd
+    * Navecd
     * Git
     * Go
     * An empty git repository
@@ -18,37 +18,37 @@
 ## Create Kind Cluster
 
 ``` bash
-kind create cluster --name declcd
+kind create cluster --name navecd
 ```
 
-## Initialize a Declcd GitOps Repository
+## Initialize a Navecd GitOps Repository
 
 ``` bash
 mkdir mygitops
 cd mygitops
 git init
 git remote add origin git@github.com:user/mygitops.git
-# init Declcd gitops repository as a CUE module
+# init Navecd gitops repository as a CUE module
 export CUE_REGISTRY=ghcr.io/kharf
-declcd init github.com/user/mygitops
+navecd init github.com/user/mygitops
 go mod init mygitops
-declcd verify
+navecd verify
 git add .
-git commit -m "Init declcd"
+git commit -m "Init navecd"
 git push -u origin main
 ```
 See [CUE module reference](https://cuelang.org/docs/reference/modules/#module-path) for valid CUE module paths.
 
-## Install Declcd onto your Kubernetes Cluster
+## Install Navecd onto your Kubernetes Cluster
 
 ``` bash
-declcd install \
+navecd install \
   -u git@github.com:user/mygitops.git \
   -b main \
   --name dev \
   -t <token>
 git add .
-git commit -m "Install declcd"
+git commit -m "Install navecd"
 ```
 
 ## Deploy a Manifest and a HelmRelease
@@ -78,11 +78,11 @@ Edit `infrastructure/prometheus.cue` and add:
 package infrastructure
 
 import (
-	"github.com/kharf/declcd/schema/component"
+	"github.com/kharf/navecd/schema/component"
 	corev1 "k8s.io/api/core/v1"
 )
 
-// Public Declcd Manifest Component
+// Public Navecd Manifest Component
 ns: component.#Manifest & {
 	content: corev1.#Namespace & {
 		apiVersion: "v1"
@@ -93,10 +93,10 @@ ns: component.#Manifest & {
 	}
 }
 
-// Public Declcd HelmRelease Component
+// Public Navecd HelmRelease Component
 prometheusStack: component.#HelmRelease & {
 	dependencies: [
-    // Declcd automatically generates ids for Components, which are used for dependency constraints.
+    // Navecd automatically generates ids for Components, which are used for dependency constraints.
 		ns.id,
 	]
 	name:      "prometheus-stack"
@@ -113,10 +113,10 @@ prometheusStack: component.#HelmRelease & {
 }
 ```
 
-See [getting-started](https://github.com/kharf/declcd/blob/main/examples/getting-started/infrastructure/prometheus.cue) example.
+See [getting-started](https://github.com/kharf/navecd/blob/main/examples/getting-started/infrastructure/prometheus.cue) example.
 
 ``` bash
-declcd verify
+navecd verify
 git add .
 git commit -m "feat: install kube-prometheus-stack"
 ```

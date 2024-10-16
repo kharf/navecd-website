@@ -1,4 +1,4 @@
-Declcd has first class support for Helm. It can install and upgrade Charts.
+Navecd has first class support for Helm. It can install and upgrade Charts.
 Drift detection is enabled by default and implemented by patching Helm with Server-Side Apply (SSA).
 
 ## Install Helm Chart
@@ -9,7 +9,7 @@ To install a Helm Chart, declare a desired HelmRelease Component:
 package myapp
 
 import (
-  "github.com/kharf/declcd/schema/component"
+  "github.com/kharf/navecd/schema/component"
 )
 
 myRelease: component.#HelmRelease & {
@@ -36,7 +36,7 @@ A Secret can be referenced as follows:
 package myapp
 
 import (
-  "github.com/kharf/declcd/schema/component"
+  "github.com/kharf/navecd/schema/component"
 )
 
 myRelease: component.#HelmRelease & {
@@ -63,17 +63,17 @@ myRelease: component.#HelmRelease & {
 Helm 3 supports installation of CRDs through a `crds` directory inside a Chart, but it does not support upgrades/deletions.
 See [reason](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#some-caveats-and-explanations).
 
-However, CRD upgrade is supported by Declcd and can be enabled:
+However, CRD upgrade is supported by Navecd and can be enabled:
 
 !!! info
 
-    Declcd never deletes CRDs contained in a Chart. It only handles installations and upgrades.
+    Navecd never deletes CRDs contained in a Chart. It only handles installations and upgrades.
 
 ``` cue hl_lines="17"
 package myapp
 
 import (
-  "github.com/kharf/declcd/schema/component"
+  "github.com/kharf/navecd/schema/component"
 )
 
 myRelease: component.#HelmRelease & {
@@ -103,7 +103,7 @@ Manifests are identified by their GVK(Group/Version/Kind), Name and Namespace fo
 package myapp
 
 import (
-  "github.com/kharf/declcd/schema/component"
+  "github.com/kharf/navecd/schema/component"
 )
 
 myRelease: component.#HelmRelease & {

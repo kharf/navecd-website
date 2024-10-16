@@ -1,4 +1,4 @@
-Declcd deployed on Azure AKS, AWS EKS or GCP GKE can be configured to use Workload Identity to access the corresponding cloud container registries.
+Navecd deployed on Azure AKS, AWS EKS or GCP GKE can be configured to use Workload Identity to access the corresponding cloud container registries.
 
 ## Azure AKS
 
@@ -11,7 +11,7 @@ client ID:
 
 !!! note
 
-    If no Service Account is provided via the GitOpsProject spec, Declcd uses the ServiceAccount from the Controller Deployment.
+    If no Service Account is provided via the GitOpsProject spec, Navecd uses the ServiceAccount from the Controller Deployment.
 
 ``` cue
 primaryServiceAccount: component.#Manifest & {
@@ -28,17 +28,17 @@ primaryServiceAccount: component.#Manifest & {
 }
 ```
 
-Label Declcd pods to use Workload Identity:
+Label Navecd pods to use Workload Identity:
 
 !!! note
 
-    The Declcd Controller Deployment value name contains the shard name when initialized through the Declcd CLI. The default name is "primaryProjectControllerDeployment".
+    The Navecd Controller Deployment value name contains the shard name when initialized through the Navecd CLI. The default name is "primaryProjectControllerDeployment".
 
-``` cue title="declcd/patch.cue"
-package declcd
+``` cue title="navecd/patch.cue"
+package navecd
 
 import (
-  "github.com/kharf/declcd/schema/component"
+  "github.com/kharf/navecd/schema/component"
 )
 
 primaryProjectControllerDeployment: component.#Manifest & {
@@ -56,8 +56,8 @@ Update your Helm Release to use Workload Identity:
 package myapp
 
 import (
-  "github.com/kharf/declcd/schema/component"
-  "github.com/kharf/declcd/schema/workloadidentity"
+  "github.com/kharf/navecd/schema/component"
+  "github.com/kharf/navecd/schema/workloadidentity"
 )
 
 release: component.#HelmRelease & {
@@ -85,8 +85,8 @@ Update your Helm Release to use Workload Identity:
 package myapp
 
 import (
-  "github.com/kharf/declcd/schema/component"
-  "github.com/kharf/declcd/schema/workloadidentity"
+  "github.com/kharf/navecd/schema/component"
+  "github.com/kharf/navecd/schema/workloadidentity"
 )
 
 release: component.#HelmRelease & {
@@ -114,8 +114,8 @@ Update your Helm Release to use Workload Identity:
 package myapp
 
 import (
-  "github.com/kharf/declcd/schema/component"
-  "github.com/kharf/declcd/schema/workloadidentity"
+  "github.com/kharf/navecd/schema/component"
+  "github.com/kharf/navecd/schema/workloadidentity"
 )
 
 release: component.#HelmRelease & {

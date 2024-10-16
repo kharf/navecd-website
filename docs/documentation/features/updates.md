@@ -2,13 +2,13 @@ Update automation is often implemented outside of your cluster through CI script
 you have to give permissions to your CI platform. This might as well mean to store credentials somewhere accessible by your CI platform.
 
 Your cluster should already have these permissions as it has to be able to fetch images or Helm Charts from private registries/repositories in order to deploy your applications.
-Declcd can reuse these permissions for container or Helm Chart updates.
+Navecd can reuse these permissions for container or Helm Chart updates.
 
 ``` cue title="myapp/deployment.cue" hl_lines="21 42"
 package myapp
 
 import (
-  "github.com/kharf/declcd/schema/component"
+  "github.com/kharf/navecd/schema/component"
 )
 
 deployment: component.#Manifest & {
@@ -53,7 +53,7 @@ myRelease: component.#HelmRelease & {
 }
 ```
 
-`@update()` is a custom CUE build attribute, implemented and understood by Declcd. You can attach it to image fields or helm chart declarations.
+`@update()` is a custom CUE build attribute, implemented and understood by Navecd. You can attach it to image fields or helm chart declarations.
 
 ## Options
 
@@ -63,5 +63,5 @@ myRelease: component.#HelmRelease & {
 | `constraint`  | string | ""       | The version range to be considered during the update process.                                                                                                                                                                                                   | @update(constraint=">= 1.2.3"   |
 | `secret`      | string | ""       | The reference to the kubernetes secret containing the repository/registry authentication.                                                                                                                                                                       | @update(secret=mysecret)        |
 | `wi`          | string | ""       | WorkloadIdentity is a keyless approach used for repository/registry authentication. Possible values are "gcp", "aws", "azure".                                                                                                                                  | @update(wi=gcp)                 |
-| `integration` | string | pr       | The method on how to push updates to the version control system. Possible values are "pr" and "direct".  "pr" tells Declcd to create Github Pull-Requests or Gitlab Merge-Requests. "direct" tells Declcd to push updates directly to the GitOpsProject branch. | @update(integration=direct)     |
+| `integration` | string | pr       | The method on how to push updates to the version control system. Possible values are "pr" and "direct".  "pr" tells Navecd to create Github Pull-Requests or Gitlab Merge-Requests. "direct" tells Navecd to push updates directly to the GitOpsProject branch. | @update(integration=direct)     |
 | `schedule`    | string | ""       | A string in cron format with an additional seconds field and defines when the target is scanned for updates.                                                                                                                                                    | @update(schedule="* * * * * *") |

@@ -1,4 +1,4 @@
-When installing Declcd on Github or GitLab, Declcd will create a Deploy Key with the provided Access Token and store the private SSH key in a Kubernetes Secret.
+When installing Navecd on Github or GitLab, Navecd will create a Deploy Key with the provided Access Token and store the private SSH key in a Kubernetes Secret.
 
 ## Rotation
 
@@ -7,5 +7,5 @@ In order to rotate the Deploy Key, you have to manually delete the Kubernetes Se
 The secret resides in the Controller Namespace and is prefixed with "vcs-auth" and suffixed with the GitOpsProject name.
 
 ``` bash
-kubectl delete -n declcd-system secret vcs-auth-myproject
+kubectl delete -n navecd-system secret vcs-auth-myproject
 ```
