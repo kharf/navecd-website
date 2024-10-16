@@ -55,6 +55,7 @@ nav:
           - Secrets: documentation/features/secrets.md
           - Deploy Key: documentation/features/deploy-key.md
           - Workload Identity: documentation/features/workload-identity.md
+          - Updates: documentation/features/updates.md
           - Multi-Tenancy / Sharding: documentation/features/multi-tenancy.md
           - High Availability: documentation/features/ha.md
 

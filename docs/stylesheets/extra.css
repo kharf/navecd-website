@@ -31,3 +31,10 @@
     transition: border .25s, box-shadow .25s;
     background-color: #1F212B;
 }
+
+th, td {
+    border: .05rem solid;
+    border-color: #1F212B;
+    background-color: #1F212B;
+    font-size: 0.55rem
+}
