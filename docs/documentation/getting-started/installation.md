@@ -7,7 +7,7 @@ You can install Navecd by downloading the binaries directly:
 === "Linux (x86_64)"
 
     ``` bash title="Install script"
-    curl -L -o navecd.tar.gz https://github.com/kharf/navecd/releases/download/v0.26.4/navecd_linux_x86_64.tar.gz
+    curl -L -o navecd.tar.gz https://github.com/kharf/navecd/releases/download/v0.26.5/navecd_linux_x86_64.tar.gz
     tar -xf navecd.tar.gz
     chmod +x navecd
     ./navecd -h
@@ -16,7 +16,7 @@ You can install Navecd by downloading the binaries directly:
 === "MacOS (x86_64)"
 
     ``` bash title="Install script"
-    curl -L -o navecd.tar.gz https://github.com/kharf/navecd/releases/download/v0.26.4/navecd_darwin_x86_64.tar.gz
+    curl -L -o navecd.tar.gz https://github.com/kharf/navecd/releases/download/v0.26.5/navecd_darwin_x86_64.tar.gz
     tar -xf navecd.tar.gz
     chmod +x navecd
     ./navecd -h
@@ -25,7 +25,7 @@ You can install Navecd by downloading the binaries directly:
 === "MacOS (arm64)"
 
     ``` bash title="Install script"
-    curl -L -o navecd.tar.gz https://github.com/kharf/navecd/releases/download/v0.26.4/navecd_darwin_arm64.tar.gz
+    curl -L -o navecd.tar.gz https://github.com/kharf/navecd/releases/download/v0.26.5/navecd_darwin_arm64.tar.gz
     tar -xf navecd.tar.gz
     chmod +x navecd
     ./navecd -h
