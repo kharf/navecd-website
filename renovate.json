@@ -21,8 +21,8 @@
     "customManagers": [
         {
             "customType": "regex",
-            "fileMatch": [
-                "^(.*?).md$"
+            "managerFilePatterns": [
+                "/^(.*?).md$/"
             ],
             "matchStrings": [
                 "https://github.com/(?<depName>.*?)/releases/download/(?<currentValue>.*?)/"
@@ -32,8 +32,8 @@
         },
         {
             "customType": "regex",
-            "fileMatch": [
-                "build/workflows.cue"
+            "managerFilePatterns": [
+                "/build/workflows.cue/"
             ],
             "matchStrings": [
                 "uses: \"(?<depName>.*?)@(?<currentDigest>.*?)\" // (?<currentValue>.*?)(\\s|$)"
