@@ -12,7 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - name: Update
-        uses: renovatebot/github-action@8058cfe11252651a837a58e2e3370fbc0e72c658
+        uses: renovatebot/github-action@12f8ed8e6a936a00dc66b628d224488ac406b5e8
         env:
           LOG_LEVEL: debug
           RENOVATE_REPOSITORIES: ${{ github.repository }}
