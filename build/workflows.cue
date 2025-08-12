@@ -20,7 +20,7 @@ import "github.com/kharf/cuepkgs/modules/github@v0"
 
 #checkoutCode: {
 	name: "Checkout code"
-	uses: "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683" // v4.2.2
+	uses: "actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8" // v5
 	with?: {
 		[string]: string | number | bool
 		token:    "${{ secrets.PAT }}"
