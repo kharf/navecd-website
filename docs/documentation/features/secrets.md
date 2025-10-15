@@ -1,4 +1,4 @@
-Secrets, encrypted or unencrypted, should not reside in Git and are best managed by a dedicated secret manager.
+Secrets, encrypted or unencrypted, should not reside in source repositories and are best managed by a dedicated secret manager.
 
 Navecd integrates well with the [External Secrets Operator](https://external-secrets.io/).
 

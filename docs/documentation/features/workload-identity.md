@@ -52,7 +52,7 @@ primaryProjectControllerDeployment: component.#Manifest & {
 
 Update your Helm Release to use Workload Identity:
 
-``` cue
+``` cue hl_lines="16"
 package myapp
 
 import (
@@ -73,6 +73,40 @@ release: component.#HelmRelease & {
 }
 ```
 
+Update your GitOpsProject to use Workload Identity:
+
+``` cue hl_lines="26"
+package myapp
+
+import (
+  "github.com/kharf/navecd/schema/component"
+  "github.com/kharf/navecd/schema/workloadidentity"
+)
+
+project: component.#Manifest & {
+	dependencies: [
+		crd.id,
+		ns.id,
+	]
+	content: {
+		apiVersion: "gitops.navecd.io/v1beta1"
+		kind:       "GitOpsProject"
+		metadata: {
+			name:      "mygitops"
+			namespace: "navecd-system"
+			labels: _primaryLabels
+		}
+		spec: {
+			url:                 "oci://myfakeregistry.azurecr.io"
+			ref:                 "latest"
+			pullIntervalSeconds: 5
+			suspend:             false
+			auth: workloadidentity.#Azure
+		}
+	}
+}
+```
+
 ## AWS EKS
 
 !!! info
@@ -81,7 +115,7 @@ release: component.#HelmRelease & {
 
 Update your Helm Release to use Workload Identity:
 
-``` cue
+``` cue hl_lines="16"
 package myapp
 
 import (
@@ -102,6 +136,40 @@ release: component.#HelmRelease & {
 }
 ```
 
+Update your GitOpsProject to use Workload Identity:
+
+``` cue hl_lines="26"
+package myapp
+
+import (
+  "github.com/kharf/navecd/schema/component"
+  "github.com/kharf/navecd/schema/workloadidentity"
+)
+
+project: component.#Manifest & {
+	dependencies: [
+		crd.id,
+		ns.id,
+	]
+	content: {
+		apiVersion: "gitops.navecd.io/v1beta1"
+		kind:       "GitOpsProject"
+		metadata: {
+			name:      "mygitops"
+			namespace: "navecd-system"
+			labels: _primaryLabels
+		}
+		spec: {
+			url:                 "oci://myfakeregistry.azurecr.io"
+			ref:                 "latest"
+			pullIntervalSeconds: 5
+			suspend:             false
+			auth: workloadidentity.#AWS
+		}
+	}
+}
+```
+
 ## GCP GKE
 
 !!! info
@@ -110,7 +178,7 @@ release: component.#HelmRelease & {
 
 Update your Helm Release to use Workload Identity:
 
-``` cue
+``` cue hl_lines="16"
 package myapp
 
 import (
@@ -129,4 +197,39 @@ release: component.#HelmRelease & {
     auth:    workloadidentity.#GCP
   }
 }
+
 ```
+Update your GitOpsProject to use Workload Identity:
+
+``` cue hl_lines="26"
+package myapp
+
+import (
+  "github.com/kharf/navecd/schema/component"
+  "github.com/kharf/navecd/schema/workloadidentity"
+)
+
+project: component.#Manifest & {
+	dependencies: [
+		crd.id,
+		ns.id,
+	]
+	content: {
+		apiVersion: "gitops.navecd.io/v1beta1"
+		kind:       "GitOpsProject"
+		metadata: {
+			name:      "mygitops"
+			namespace: "navecd-system"
+			labels: _primaryLabels
+		}
+		spec: {
+			url:                 "oci://myfakeregistry.azurecr.io"
+			ref:                 "latest"
+			pullIntervalSeconds: 5
+			suspend:             false
+			auth: workloadidentity.#GCP
+		}
+	}
+}
+```
+

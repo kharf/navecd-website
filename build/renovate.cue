@@ -41,6 +41,29 @@ customManagers: [
 	{
 		customType: "regex"
 		fileMatch: [
+			"^(.*?).cue$",
+		]
+		matchStrings: [
+			"uses: \"(?<depName>.*?)@(?<currentValue>.*?)\"",
+		]
+		datasourceTemplate: "github-tags"
+		versioningTemplate: "semver-coerced"
+	},
+	{
+		fileMatch: [
+			"^(.*?)cue.mod/module.cue$",
+		]
+		matchStrings: [
+			"version: \"(?<currentValue>.*?)\"",
+			"Language: &modfile.Language{\n(\t*)Version: \"(?<currentValue>.*?)\",\n(\t*)}",
+		]
+		depNameTemplate:    "cue-lang/cue"
+		datasourceTemplate: "github-releases"
+		versioningTemplate: "semver-coerced"
+	},
+	{
+		customType: "regex"
+		fileMatch: [
 			"build/workflows.cue",
 		]
 		matchStrings: [#"uses: "(?<depName>.*?)@(?<currentDigest>.*?)" // (?<currentValue>.*?)(\s|$)"#]

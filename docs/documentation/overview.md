@@ -1,6 +1,6 @@
 ## What is GitOps?
 
-GitOps is a way of implementing Continuous Deployment for cloud native applications by having a Git repository that contains declarative descriptions of the desired infrastructure and applications
+GitOps is a way of implementing Continuous Deployment for cloud native applications by having a repository that contains declarative descriptions of the desired infrastructure and applications
 and an automated process to reconcile the production environment with the desired state in the repository.
 
 ## Why Navecd?
@@ -23,13 +23,13 @@ Navecd adheres to the GitOps Principles:
 
     ---
 
-    Git as the source of truth for defining the desired system state
+    OCI repositories as the source of truth for defining the desired system state
 
 -   __Pulled Automatically__
 
     ---
 
-    Navecd automatically pulls the desired state declarations, written as CUE values, from Git
+    Navecd automatically pulls the desired state declarations, written as CUE values, from OCI repositories
 
 -   __Continuously Reconciled__
 
@@ -42,12 +42,11 @@ Navecd adheres to the GitOps Principles:
 ## Deploy anything
 
 Deployments, StatefulSets, Pods, ConfigMaps, ..., anything you can deploy to Kubernetes can be deployed with Navecd.
-Just push to Git and let Navecd do the work from inside your Cluster!
 Got a Helm Chart? Deploy it with Navecd.
 
 ## Basics of Navecd
 
-Navecd does not enforce any kind of repository structure, but there is one constraint for the declaration of the cluster state.
+Navecd does not enforce any kind of repository structure, but there is one constraint for declarations of cluster state.
 Every top-level CUE value in a package, which is not hidden and not a [Definition](https://cuelang.org/docs/tour/basics/definitions/), has to be what Navecd calls a *Component*.
 Navecd Components effectively describe the desired cluster state and currently exist in two forms: *Manifests* and *HelmReleases*.
 A *Manifest* is a typical [Kubernetes Object](https://kubernetes.io/docs/concepts/overview/working-with-objects/), which you would normally describe in yaml format.

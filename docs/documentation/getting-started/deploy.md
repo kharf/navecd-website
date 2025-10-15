@@ -1,6 +1,6 @@
 !!! note
 
-    For the purpose of demonstration this guide uses [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/) to create a Kubernetes cluster and Github.
+    For the purpose of demonstration this guide uses [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/) to create a Kubernetes cluster and an OCI registry.
     We recommend that beginners follow along with both.
 
 <div class="grid" markdown>
@@ -8,34 +8,26 @@
 === "Requirements"
 
     * Navecd
-    * Git
     * Go
-    * An empty git repository
-    * A GitHub personal access token with repo permissions
+    * Kind
+    * Docker/Podman
 
 </div>
 
 ## Create Kind Cluster
 
-``` bash
-kind create cluster --name navecd
-```
+Set up a local Kubernetes cluster and local OCI registry as documented in https://kind.sigs.k8s.io/docs/user/local-registry/.
 
 ## Initialize a Navecd GitOps Repository
 
 ``` bash
 mkdir mygitops
 cd mygitops
-git init
-git remote add origin git@github.com:user/mygitops.git
 # init Navecd gitops repository as a CUE module
 export CUE_REGISTRY=ghcr.io/kharf
 navecd init github.com/user/mygitops
 go mod init mygitops
 navecd verify
-git add .
-git commit -m "Init navecd"
-git push -u origin main
 ```
 See [CUE module reference](https://cuelang.org/docs/reference/modules/#module-path) for valid CUE module paths.
 
@@ -43,12 +35,9 @@ See [CUE module reference](https://cuelang.org/docs/reference/modules/#module-pa
 
 ``` bash
 navecd install \
-  -u git@github.com:user/mygitops.git \
-  -b main \
-  --name dev \
-  -t <token>
-git add .
-git commit -m "Install navecd"
+  -u localhost:5001/mygitops \
+  -r latest \
+  --name dev
 ```
 
 ## Deploy a Manifest and a HelmRelease
@@ -105,7 +94,7 @@ prometheusStack: component.#HelmRelease & {
 	chart: {
 		name:    "kube-prometheus-stack"
 		repoURL: "https://prometheus-community.github.io/helm-charts"
-		version: "58.2.1"
+		version: "x.x.x"
 	}
 	values: {
 		prometheus: prometheusSpec: serviceMonitorSelectorNilUsesHelmValues: false
@@ -117,6 +106,7 @@ See [getting-started](https://github.com/kharf/navecd/blob/main/examples/getting
 
 ``` bash
 navecd verify
-git add .
-git commit -m "feat: install kube-prometheus-stack"
+navecd push \
+  -u localhost:5001/mygitops \
+  -r latest
 ```

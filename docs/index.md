@@ -18,13 +18,13 @@ hide:
 
     ---
 
-    Git as the source of truth for defining the desired system state
+    OCI repositories as the source of truth for defining the desired system state
 
 -   __Pulled Automatically__
 
     ---
 
-    Navecd automatically pulls the desired state declarations, written as CUE values, from Git
+    Navecd automatically pulls the desired state declarations, written as CUE values, from OCI repositories
 
 -   __Continuously Reconciled__
 
@@ -42,8 +42,6 @@ hide:
     ---
 
     Deployments, StatefulSets, Pods, ConfigMaps, ..., anything you can deploy to Kubernetes can be deployed with Navecd.
-
-    Just push to Git and let Navecd do the work from inside your Cluster!
 
     [Get started!](documentation/getting-started/installation.md)
 
